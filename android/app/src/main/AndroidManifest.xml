@@ -8,7 +8,7 @@
 
     <application
         android:name="${applicationName}"
-        android:label="Flutter eBook App"
+        android:label="Readefined"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true"
         android:requestLegacyExternalStorage="true">

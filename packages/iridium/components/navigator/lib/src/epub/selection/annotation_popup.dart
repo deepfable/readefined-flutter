@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mno_navigator/epub.dart';
 import 'package:mno_navigator/publication.dart';
+import 'package:mno_navigator/src/epub/selection/post.dart';
 
 class AnnotationPopup extends StatefulWidget {
   final SelectionListener selectionListener;
@@ -69,44 +70,58 @@ class AnnotationPopupState extends State<AnnotationPopup> {
 
   @override
   Widget build(BuildContext context) => AlertDialog(
-        title: Text("Note"),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
-                border: Border(
-                  left: BorderSide(color: tint, width: borderWidth),
-                ),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(left: borderWidth),
-                child: Text(selection.locator.text.highlight ?? ""),
-              ),
-            ),
-            TextField(
-              controller: _controller,
-              onSubmitted: (value) => saveHighlight(value),
+          title: Text("Note"),
+          content: PostRequestComponent(),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text("Close"),
             ),
           ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text("Cancel"),
-          ),
-          TextButton(
-            onPressed: () {
-              saveHighlight(_controller.text);
-              Navigator.pop(context);
-            },
-            child: Text("Save"),
-          ),
-        ],
-      );
+        );
+  // @override
+  // Widget build(BuildContext context) => AlertDialog(
+  //       title: Text("Note"),
+  //       content: Column(
+  //         mainAxisSize: MainAxisSize.min,
+  //         children: [
+  //           Container(
+  //             alignment: Alignment.centerLeft,
+  //             decoration: BoxDecoration(
+  //               border: Border(
+  //                 left: BorderSide(color: tint, width: borderWidth),
+  //               ),
+  //             ),
+  //             child: Padding(
+  //               padding: const EdgeInsets.only(left: borderWidth),
+  //               child: Text(selection.locator.text.highlight ?? ""),
+  //             ),
+  //           ),
+  //           TextField(
+  //             controller: _controller,
+  //             onSubmitted: (value) => saveHighlight(value),
+  //           ),
+  //         ],
+  //       ),
+  //       actions: [
+  //         TextButton(
+  //           onPressed: () {
+  //             Navigator.pop(context);
+  //           },
+  //           child: Text("Cancel"),
+  //         ),
+  //         TextButton(
+  //           onPressed: () {
+  //             saveHighlight(_controller.text);
+  //             Navigator.pop(context);
+  //           },
+  //           child: Text("Save"),
+  //         ),
+  //       ],
+  //     );
+
 
   void saveHighlight(String text) {
     String? id = highlightId;

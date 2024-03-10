@@ -30,7 +30,7 @@ class NewSelectionPopup extends SelectionPopup {
                 selectionListener.showHighlightPopup(selection,
                     HighlightStyle.underline, HighlightPopup.highlightTints[0]);
               }),
-              buildOption("Note", () {
+              buildOption("Summarise", () {
                 selectionListener.showAnnotationPopup(selection,
                     style: HighlightStyle.highlight,
                     tint: HighlightPopup.highlightTints[0]);
